@@ -1,0 +1,29 @@
+{
+  "name": "dockerfilelinter",
+  "version": "0.1.0",
+  "description": "a npm package to lint Dockerfiles",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/mocha --recursive --reporter spec test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mundodocker/dockerfilelinter.git"
+  },
+  "keywords": [
+    "dockerfile",
+    "lint",
+    "linter",
+    "validation"
+  ],
+  "author": "mundodocker",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mundodocker/dockerfilelinter/issues"
+  },
+  "homepage": "https://github.com/mundodocker/dockerfilelinter#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^2.5.3"
+  }
+}
