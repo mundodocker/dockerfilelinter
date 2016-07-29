@@ -10,6 +10,14 @@ describe('should validate FROM instruction', () => {
     expect(rules).to.be.empty
   })
 
+  it('should emmit error FRM001 if `tag` or `digest` is empty', () => {
+    const rules = From.validate('ubuntu:')
+
+    expect(rules).to.be.instanceOf(Array)
+    expect(rules).to.have.length(1)
+    expect(rules).to.have.deep.property('[0]', 'FRM001')
+  })
+
   it('should accept valid image with tag', () => {
     const rules = From.validate('ubuntu:14.04')
 

@@ -1,10 +1,9 @@
-dockerfilelinter
-===
+# dockerfilelinter
 
-Rules
---
+## Rules
 
 **FROM**
+
 - [ ] FROM must be the first non-comment instruction
 - [x] Allow FROM scratch
 - [x] Allow FROM with tag
@@ -16,9 +15,11 @@ Rules
 - [ ] Warn if missing tag or digest
 
 **MAINTAINER**
+
 - [x] Optional
 
 **RUN**
+
 - [ ] Allow RUN in shell form
 - [ ] Allow RUN in exec form
 - [ ] Allow RUN in shell form with multiple lines
