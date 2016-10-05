@@ -9,10 +9,10 @@
 - [x] Allow FROM with tag
 - [x] Allow FROM with digest
 - [ ] Allow multiple FROM occurrences
-- [ ] Allow optional tag
-- [ ] Allow optional digest
-- [ ] Warn if tag equals to `latest`
-- [ ] Warn if missing tag or digest
+- [x] Allow optional tag
+- [x] Allow optional digest
+- [x] Warn if tag equals to `latest`
+- [x] Warn if missing tag or digest
 
 **MAINTAINER**
 
