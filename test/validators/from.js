@@ -1,42 +1,60 @@
 /* global describe it */
 const expect = require('chai').expect
-const From = require('../../src/validators/from')
+const errors = require('../../src/constants/errors')
+const from = require('../../src/validators/from')
+const warnings = require('../../src/constants/warnings')
 
 describe('should validate FROM instruction', () => {
   it('should accept `scratch` image name', () => {
-    const rules = From.validate('scratch')
+    const state = from('scratch')
 
-    expect(rules).to.be.instanceOf(Array)
-    expect(rules).to.be.empty
+    expect(state).to.be.an('object')
+    expect(state).to.have.deep.property('valid', true)
   })
 
-  it('should emmit error FRM001 if `tag` or `digest` is empty', () => {
-    const rules = From.validate('ubuntu:')
+  it('should emmit error FRM001 if `tag` is empty', () => {
+    const state = from('ubuntu:')
 
-    expect(rules).to.be.instanceOf(Array)
-    expect(rules).to.have.length(1)
-    expect(rules).to.have.deep.property('[0]', 'FRM001')
+    expect(state).to.be.an('object')
+    expect(state).to.have.deep.property('valid', false)
+    expect(state).to.have.deep.property('rule', errors.FRM001)
+  })
+
+  it('should emmit error FRM001 if `digest` is empty', () => {
+    const state = from('ubuntu@')
+
+    expect(state).to.be.an('object')
+    expect(state).to.have.deep.property('valid', false)
+    expect(state).to.have.deep.property('rule', errors.FRM001)
   })
 
   it('should accept valid image with tag', () => {
-    const rules = From.validate('ubuntu:14.04')
+    const state = from('ubuntu:14.04')
 
-    expect(rules).to.be.instanceOf(Array)
-    expect(rules).to.be.empty
+    expect(state).to.be.an('object')
+    expect(state).to.have.deep.property('valid', true)
   })
 
   it('should accept valid image with digest', () => {
-    const rules = From.validate('ouruser/sinatra@cbbf2f9a99b47fc460d422812b6a5adff7dfee951d8fa2e4a98caa0382cfbdbf')
+    const state = from('ouruser/sinatra@cbbf2f9a99b47fc460d422812b6a5adff7dfee951d8fa2e4a98caa0382cfbdbf')
 
-    expect(rules).to.be.instanceOf(Array)
-    expect(rules).to.be.empty
+    expect(state).to.be.an('object')
+    expect(state).to.have.deep.property('valid', true)
+  })
+
+  it('should emmit warn WRN002 if image `tag` or `digest` is omitted', () => {
+    const state = from('ubuntu')
+
+    expect(state).to.be.an('object')
+    expect(state).to.have.deep.property('valid', false)
+    expect(state).to.have.deep.property('rule', warnings.WRN002)
   })
 
   it('should emmit warn WRN002 if `latest` is used', () => {
-    const rules = From.validate('ubuntu:latest')
+    const state = from('ubuntu:latest')
 
-    expect(rules).to.be.instanceOf(Array)
-    expect(rules).to.have.length(1)
-    expect(rules).to.have.deep.property('[0]', 'WRN002')
+    expect(state).to.be.an('object')
+    expect(state).to.have.deep.property('valid', false)
+    expect(state).to.have.deep.property('rule', warnings.WRN002)
   })
 })
