@@ -24,6 +24,8 @@
   "homepage": "https://github.com/mundodocker/dockerfilelinter#readme",
   "devDependencies": {
     "chai": "^3.5.0",
+    "coveralls": "^2.11.14",
+    "istanbul": "^0.4.5",
     "mocha": "^2.5.3"
   }
 }
