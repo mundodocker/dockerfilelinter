@@ -20,9 +20,9 @@
 
 **RUN**
 
-- [ ] Allow RUN in shell form
-- [ ] Allow RUN in exec form
-- [ ] Allow RUN in shell form with multiple lines
+- [x] Allow RUN in shell form
+- [x] Allow RUN in exec form
+- [x] Allow RUN in shell form with multiple lines
 - [ ] Deny RUN in exec form with single quotes
 - [ ] Deny RUN in exec form with unescaped back lashes
 - [ ] Warn RUN in shell form with a long line of commands
