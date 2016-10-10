@@ -2,9 +2,20 @@
 
 ## Rules
 
+**GENERAL RULES**
+
+- [ ] Comments must start with #
+- [ ] FROM must be the first non-comment instruction
+
+**PARSER DIRECTIVES**
+
+- [ ] Should be a comment
+- [ ] Format must be in a key-value format (directive=value)
+- [ ] Cannot appear after a comment or another builder
+- [ ] Cannot have line continuation
+
 **FROM**
 
-- [ ] FROM must be the first non-comment instruction
 - [x] Allow FROM scratch
 - [x] Allow FROM with tag
 - [x] Allow FROM with digest
