@@ -1,5 +1,8 @@
 # dockerfilelinter
 
+[![Build Status](https://travis-ci.org/mundodocker/dockerfilelinter.svg?branch=master)](https://travis-ci.org/mundodocker/dockerfilelinter)
+[![Coverage Status](https://coveralls.io/repos/github/mundodocker/dockerfilelinter/badge.svg?branch=master)](https://coveralls.io/github/mundodocker/dockerfilelinter?branch=master)
+
 ## Rules
 
 **GENERAL RULES**
