@@ -1,24 +1,24 @@
 const constants = require('../constants/constants')
 
-module.exports = (command, singleLine = true) => {
-  if (singleLine && command.startsWith('[')) {
+module.exports = (command) => {
+  const isSingleLine = Array.isArray(command)
+
+  if (!isSingleLine) {
     return {
       valid: true
     }
-  } else if (!singleLine && command.startsWith('[')) {
+  }
+
+  try {
+    const parsedCmd = Array.from(command)
+
+    return {
+      valid: true
+    }
+  } catch (e) {
     return {
       valid: false,
       rule: constants.RUN001
     }
-  }
-
-  if (!singleLine) {
-    return {
-      valid: true
-    }
-  }
-
-  return {
-    valid: true
   }
 }

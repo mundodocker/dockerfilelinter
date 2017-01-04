@@ -19,17 +19,9 @@ describe('should validade RUN instruction', () => {
   })
 
   it('should accept multi-line `shell` form command', () => {
-    const state = run('mkdir foo \ bar', false)
+    const state = run(['mkdir foo', 'bar'])
 
     expect(state).to.be.an('object')
     expect(state).to.have.deep.property('valid', true)
-  })
-
-  it('should emmit error `RUN001` if `exec` form command has multi-lines', () => {
-    const state = run('["mkdir", "foo", \ "bar"]', false)
-
-    expect(state).to.be.an('object')
-    expect(state).to.have.deep.property('valid', false)
-    expect(state).to.have.deep.property('rule', constants.RUN001)
   })
 })
