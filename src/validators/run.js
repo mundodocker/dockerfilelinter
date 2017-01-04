@@ -1,5 +1,4 @@
-const errors = require('../constants/errors')
-const warnings = require('../constants/warnings')
+const constants = require('../constants/constants')
 
 module.exports = (command, singleLine = true) => {
   if (singleLine && command.startsWith('[')) {
@@ -9,7 +8,7 @@ module.exports = (command, singleLine = true) => {
   } else if (!singleLine && command.startsWith('[')) {
     return {
       valid: false,
-      rule: errors.RUN001
+      rule: constants.RUN001
     }
   }
 

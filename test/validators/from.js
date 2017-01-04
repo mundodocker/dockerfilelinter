@@ -1,8 +1,7 @@
 /* global describe it */
+const constants = require('../../src/constants/constants')
 const expect = require('chai').expect
-const errors = require('../../src/constants/errors')
 const from = require('../../src/validators/from')
-const warnings = require('../../src/constants/warnings')
 
 describe('should validate FROM instruction', () => {
   it('should accept `scratch` image name', () => {
@@ -17,7 +16,7 @@ describe('should validate FROM instruction', () => {
 
     expect(state).to.be.an('object')
     expect(state).to.have.deep.property('valid', false)
-    expect(state).to.have.deep.property('rule', errors.FRM001)
+    expect(state).to.have.deep.property('rule', constants.FRM001)
   })
 
   it('should emmit error FRM001 if `digest` is empty', () => {
@@ -25,7 +24,7 @@ describe('should validate FROM instruction', () => {
 
     expect(state).to.be.an('object')
     expect(state).to.have.deep.property('valid', false)
-    expect(state).to.have.deep.property('rule', errors.FRM001)
+    expect(state).to.have.deep.property('rule', constants.FRM001)
   })
 
   it('should accept valid image with tag', () => {
@@ -42,19 +41,19 @@ describe('should validate FROM instruction', () => {
     expect(state).to.have.deep.property('valid', true)
   })
 
-  it('should emmit warn WRN002 if image `tag` or `digest` is omitted', () => {
+  it('should emmit warn FROM002 if image `tag` or `digest` is omitted', () => {
     const state = from('ubuntu')
 
     expect(state).to.be.an('object')
     expect(state).to.have.deep.property('valid', false)
-    expect(state).to.have.deep.property('rule', warnings.WRN002)
+    expect(state).to.have.deep.property('rule', constants.FROM002)
   })
 
-  it('should emmit warn WRN002 if `latest` is used', () => {
+  it('should emmit warn FROM002 if `latest` is used', () => {
     const state = from('ubuntu:latest')
 
     expect(state).to.be.an('object')
     expect(state).to.have.deep.property('valid', false)
-    expect(state).to.have.deep.property('rule', warnings.WRN002)
+    expect(state).to.have.deep.property('rule', constants.FROM002)
   })
 })
