@@ -37,7 +37,8 @@
 - [x] Allow RUN in shell form
 - [x] Allow RUN in exec form
 - [x] Allow RUN in shell form with multiple lines
-- [ ] Deny RUN in exec form with single quotes
-- [ ] Deny RUN in exec form with unescaped back lashes
+- [x] Deny RUN in exec form with single quotes
+- [x] Deny RUN in exec form with unescaped back lashes
+- [x] Warn RUN in exec form with an invalid JSON, where the command is treated as shell form
 - [ ] Warn RUN in shell form with a long line of commands
 - [ ] Warn RUN in shell form if arguments aren't sorted alphanumerically

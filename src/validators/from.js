@@ -1,4 +1,4 @@
-const constants = require('../constants/constants')
+const rules = require('../constants/rules')
 
 module.exports = (image) => {
   if (image === 'scratch') {
@@ -13,14 +13,14 @@ module.exports = (image) => {
     if (!tag) {
       return {
         valid: false,
-        rule: constants.FRM001
+        rule: rules.FRM001
       }
     }
 
     if (tag.toLowerCase() === 'latest') {
       return {
         valid: false,
-        rule: constants.FROM002
+        rule: rules.FROM002
       }
     }
 
@@ -35,7 +35,7 @@ module.exports = (image) => {
     if (!digest) {
       return {
         valid: false,
-        rule: constants.FRM001
+        rule: rules.FRM001
       }
     }
 
@@ -46,6 +46,6 @@ module.exports = (image) => {
 
   return {
     valid: false,
-    rule: constants.FROM002
+    rule: rules.FROM002
   }
 }

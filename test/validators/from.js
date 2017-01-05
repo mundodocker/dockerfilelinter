@@ -1,9 +1,9 @@
 /* global describe it */
-const constants = require('../../src/constants/constants')
+const rules = require('../../src/constants/rules')
 const expect = require('chai').expect
 const from = require('../../src/validators/from')
 
-describe('should validate FROM instruction', () => {
+describe('FROM validator', () => {
   it('should accept `scratch` image name', () => {
     const state = from('scratch')
 
@@ -16,7 +16,8 @@ describe('should validate FROM instruction', () => {
 
     expect(state).to.be.an('object')
     expect(state).to.have.deep.property('valid', false)
-    expect(state).to.have.deep.property('rule', constants.FRM001)
+    expect(state).to.have.property('rule')
+    expect(state.rule).to.deep.equal(rules.FRM001)
   })
 
   it('should emmit error FRM001 if `digest` is empty', () => {
@@ -24,7 +25,8 @@ describe('should validate FROM instruction', () => {
 
     expect(state).to.be.an('object')
     expect(state).to.have.deep.property('valid', false)
-    expect(state).to.have.deep.property('rule', constants.FRM001)
+    expect(state).to.have.property('rule')
+    expect(state.rule).to.deep.equal(rules.FRM001)
   })
 
   it('should accept valid image with tag', () => {
@@ -46,7 +48,8 @@ describe('should validate FROM instruction', () => {
 
     expect(state).to.be.an('object')
     expect(state).to.have.deep.property('valid', false)
-    expect(state).to.have.deep.property('rule', constants.FROM002)
+    expect(state).to.have.property('rule')
+    expect(state.rule).to.deep.equal(rules.FROM002)
   })
 
   it('should emmit warn FROM002 if `latest` is used', () => {
@@ -54,6 +57,7 @@ describe('should validate FROM instruction', () => {
 
     expect(state).to.be.an('object')
     expect(state).to.have.deep.property('valid', false)
-    expect(state).to.have.deep.property('rule', constants.FROM002)
+    expect(state).to.have.property('rule')
+    expect(state.rule).to.deep.equal(rules.FROM002)
   })
 })

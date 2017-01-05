@@ -1,24 +1,46 @@
-const constants = require('../constants/constants')
+const rules = require('../constants/rules')
 
 module.exports = (command) => {
-  const isSingleLine = Array.isArray(command)
+  const isMultiLine = Array.isArray(command)
 
-  if (!isSingleLine) {
+  if (isMultiLine) {
     return {
       valid: true
     }
   }
 
-  try {
-    const parsedCmd = Array.from(command)
-
+  if (!command.startsWith('[')) {
     return {
       valid: true
+    }
+  }
+
+  if (command.includes('\'')) {
+    return {
+      valid: false,
+      rule: rules.RUN001
+    }
+  }
+
+  if (command.includes('\\')) {
+    return {
+      valid: false,
+      rule: rules.RUN002
+    }
+  }
+
+  try {
+    const parsedArray = JSON.parse(command)
+
+    if (Array.isArray(parsedArray)) {
+      return {
+        valid: true
+      }
     }
   } catch (e) {
     return {
       valid: false,
-      rule: constants.RUN001
+      rule: rules.RUN003
     }
   }
 }
