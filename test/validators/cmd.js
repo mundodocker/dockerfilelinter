@@ -28,4 +28,13 @@ describe('CMD validator', () => {
     expect(state).to.have.property('rule')
     expect(state.rule).to.deep.equal(rules.CMD002)
   })
+
+  it('shoud emmit error CMD002 if `exec` has an invalid JSON', () => {
+    const state = cmd('["find" "." "-type" "f" "-print0"]')
+
+    expect(state).to.have.an('object')
+    expect(state).to.have.deep.property('valid', false)
+    expect(state).to.have.property('rule')
+    expect(state.rule).to.deep.equal(rules.CMD002)
+  })
 })

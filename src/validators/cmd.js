@@ -15,8 +15,16 @@ module.exports = (cmd) => {
     }
   }
 
-  const parsedCmd = JSON.parse(cmd)
-  if (Array.isArray(parsedCmd)) {
-    return { valid: true }
+  try {
+    const parsedCmd = JSON.parse(cmd)
+
+    if (Array.isArray(parsedCmd)) {
+      return { valid: true }
+    }
+  } catch (e) {
+    return {
+      valid: false,
+      rule: rules.CMD002
+    }
   }
 }

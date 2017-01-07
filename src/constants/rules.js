@@ -34,6 +34,6 @@ module.exports = {
   CMD002: {
     code: 'cmd002',
     type: types.ERROR,
-    message: 'Invalid JSON array in `exec` form, use double quotes'
+    message: 'Invalid JSON array in `exec` form'
   }
 }
