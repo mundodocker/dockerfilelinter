@@ -1,7 +1,7 @@
 /* global describe it */
-const rules = require('../../src/constants/rules')
 const expect = require('chai').expect
 const from = require('../../src/validators/from')
+const rules = require('../../src/constants/rules')
 
 describe('FROM validator', () => {
   it('should accept `scratch` image name', () => {

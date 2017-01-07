@@ -1,8 +1,7 @@
 /* global describe it */
-const rules = require('../../src/constants/rules')
 const expect = require('chai').expect
+const rules = require('../../src/constants/rules')
 const run = require('../../src/validators/run')
-const types = require('../../src/constants/types')
 
 describe('RUN validator', () => {
   it('should accept single line `shell` form command', () => {

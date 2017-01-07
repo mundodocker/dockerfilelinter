@@ -44,8 +44,7 @@
 - [ ] Warn RUN in shell form if arguments aren't sorted alphanumerically
 
 **CMD**
-- [ ] Allow CMD in exec form: `CMD ["executable","param1","param2"]`
-- [ ] Allow CMD in shell form: `CMD command param1 param2`
-- [ ] Deny CMD in exec form with single quotes
-- [ ] Warn if shell form is used, since is the preferred form
+- [x] Allow CMD in exec form: `CMD ["executable","param1","param2"]`
+- [x] Warn if CMD shell form is used, since is the preferred form: `CMD command param1 param2`
+- [x] Deny CMD in exec form with single quotes
 - [ ] Warn if multiple CMD entries

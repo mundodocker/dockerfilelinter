@@ -4,15 +4,11 @@ module.exports = (command) => {
   const isMultiLine = Array.isArray(command)
 
   if (isMultiLine) {
-    return {
-      valid: true
-    }
+    return { valid: true }
   }
 
   if (!command.startsWith('[')) {
-    return {
-      valid: true
-    }
+    return { valid: true }
   }
 
   if (command.includes('\'')) {
@@ -33,9 +29,7 @@ module.exports = (command) => {
     const parsedArray = JSON.parse(command)
 
     if (Array.isArray(parsedArray)) {
-      return {
-        valid: true
-      }
+      return { valid: true }
     }
   } catch (e) {
     return {

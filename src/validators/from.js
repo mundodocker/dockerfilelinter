@@ -2,9 +2,7 @@ const rules = require('../constants/rules')
 
 module.exports = (image) => {
   if (image === 'scratch') {
-    return {
-      valid: true
-    }
+    return { valid: true }
   }
 
   if (image.includes(':')) {
@@ -24,9 +22,7 @@ module.exports = (image) => {
       }
     }
 
-    return {
-      valid: true
-    }
+    return { valid: true }
   }
 
   if (image.includes('@')) {
@@ -39,9 +35,7 @@ module.exports = (image) => {
       }
     }
 
-    return {
-      valid: true
-    }
+    return { valid: true }
   }
 
   return {
