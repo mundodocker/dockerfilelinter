@@ -34,11 +34,18 @@
 
 **RUN**
 
-- [x] Allow RUN in shell form
-- [x] Allow RUN in exec form
+- [x] Allow RUN in shell form: `RUN <command>`
+- [x] Allow RUN in exec form: `RUN ["executable", "param1", "param2"]`
 - [x] Allow RUN in shell form with multiple lines
 - [x] Deny RUN in exec form with single quotes
 - [x] Deny RUN in exec form with unescaped back lashes
 - [x] Warn RUN in exec form with an invalid JSON, where the command is treated as shell form
 - [ ] Warn RUN in shell form with a long line of commands
 - [ ] Warn RUN in shell form if arguments aren't sorted alphanumerically
+
+**CMD**
+- [ ] Allow CMD in exec form: `CMD ["executable","param1","param2"]`
+- [ ] Allow CMD in shell form: `CMD command param1 param2`
+- [ ] Deny CMD in exec form with single quotes
+- [ ] Warn if shell form is used, since is the preferred form
+- [ ] Warn if multiple CMD entries
