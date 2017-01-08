@@ -48,3 +48,11 @@
 - [x] Warn if CMD shell form is used, since is the preferred form: `CMD command param1 param2`
 - [x] Deny CMD in exec form with single quotes
 - [ ] Warn if multiple CMD entries
+
+**LABEL**
+- [x] Allow single line label
+- [x] Allow multiple labels in the same line
+- [x] Allow labels with multiple lines
+- [ ] Allow labels values with multiple values
+- [ ] Allow multiple labels in the same Dockerfile
+- [ ] Warn if more than one LABEl directive is found
