@@ -4,7 +4,8 @@
   "description": "a npm package to lint Dockerfiles",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --recursive --reporter spec test"
+    "coverage": "NODE_ENV=test nyc npm test && nyc report --reporter=text-lcov | coveralls",
+    "test": "tape $(find ./src -type f -name '*cmd.test.js')"
   },
   "repository": {
     "type": "git",
@@ -23,9 +24,8 @@
   },
   "homepage": "https://github.com/mundodocker/dockerfilelinter#readme",
   "devDependencies": {
-    "chai": "^3.5.0",
     "coveralls": "^2.11.14",
-    "istanbul": "^0.4.5",
-    "mocha": "^2.5.3"
+    "nyc": "^11.1.0",
+    "tape": "^4.7.0"
   }
 }
