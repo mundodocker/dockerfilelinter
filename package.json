@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "coverage": "NODE_ENV=test nyc npm test && nyc report --reporter=text-lcov | coveralls",
-    "test": "tape $(find ./src -type f -name '*cmd.test.js')"
+    "test": "tape $(find ./src -type f -name '*.test.js')"
   },
   "repository": {
     "type": "git",
