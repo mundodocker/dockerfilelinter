@@ -1,54 +1,60 @@
-/* global describe it */
-const expect = require('chai').expect
 const rules = require('../../src/constants/rules')
 const run = require('../../src/validators/run')
+const tape = require('tape')
 
-describe('RUN validator', () => {
-  it('should accept single line `shell` form command', () => {
-    const state = run('mkdir foo')
+tape('should accept single line `shell` form command', t => {
+  const state = run('mkdir foo')
 
-    expect(state).to.be.an('object')
-    expect(state).to.have.deep.property('valid', true)
-  })
+  t.equal(typeof state, 'object')
+  t.equal(state.valid, true)
 
-  it('should accept `exec` form command', () => {
-    const state = run('["mkdir", "foo"]')
+  t.end()
+})
 
-    expect(state).to.be.an('object')
-    expect(state).to.have.deep.property('valid', true)
-  })
+tape('should accept `exec` form command', t => {
+  const state = run('["mkdir", "foo"]')
 
-  it('should accept multi-line `shell` form command', () => {
-    const state = run(['mkdir -p', 'foo/bar'])
+  t.equal(typeof state, 'object')
+  t.equal(state.valid, true)
 
-    expect(state).to.be.an('object')
-    expect(state).to.have.deep.property('valid', true)
-  })
+  t.end()
+})
 
-  it('should emmit error `RUN001` if `exec` form has single quotes', () => {
-    const state = run('[\'mkdir\', \'foo\']')
+tape('should accept multi-line `shell` form command', t => {
+  const state = run(['mkdir -p', 'foo/bar'])
 
-    expect(state).to.be.an('object')
-    expect(state).to.have.deep.property('valid', false)
-    expect(state).to.have.property('rule')
-    expect(state.rule).to.deep.equal(rules.RUN001)
-  })
+  t.equal(typeof state, 'object')
+  t.equal(state.valid, true)
 
-  it('should emmit error `RUN002` if `exec` form has unescaped back lashes', () => {
-    const state = run('["c:\\windows\\system32\\tasklist.exe"]')
+  t.end()
+})
 
-    expect(state).to.be.an('object')
-    expect(state).to.have.deep.property('valid', false)
-    expect(state).to.have.property('rule')
-    expect(state.rule).to.deep.equal(rules.RUN002)
-  })
+tape('should emmit error `RUN001` if `exec` form has single quotes', t => {
+  const state = run('[\'mkdir\', \'foo\']')
 
-  it('should emmit warning `RUN002` if `exec` form has an invalid JSON', () => {
-    const state = run('["mkdir" "foo"]')
+  t.equal(typeof state, 'object')
+  t.equal(state.valid, false)
+  t.equal(state.rule, rules.RUN001)
 
-    expect(state).to.be.an('object')
-    expect(state).to.have.property('rule')
-    expect(state).to.have.deep.property('valid', false)
-    expect(state.rule).to.deep.equal(rules.RUN003)
-  })
+  t.end()
+})
+
+tape('should emmit error `RUN002` if `exec` form has unescaped back lashes', t => {
+  const state = run('["c:\\windows\\system32\\tasklist.exe"]')
+
+  t.equal(typeof state, 'object')
+  t.equal(state.valid, false)
+  t.equal(state.rule, rules.RUN002)
+
+  t.end()
+})
+
+tape('should emmit warning `RUN002` if `exec` form has an invalid JSON', t => {
+  const state = run('["mkdir" "foo"]')
+
+  t.equal(typeof state, 'object')
+  t.equal(state.valid, false)
+  t.equal(state.rule, rules.RUN003)
+
+  t.end()
 })
