@@ -1,26 +1,29 @@
-/* global describe, it */
-const expect = require('chai').expect
 const label = require('../../src/validators/label')
+const tape = require('tape')
 
-describe('LABEL validator', () => {
-  it('should accept single line LABEl directives', () => {
-    const state = label('"com.example.vendor"="ACME Incorporated"')
+tape('should accept single line LABEl directives', t => {
+  const state = label('"com.example.vendor"="ACME Incorporated"')
 
-    expect(state).to.have.an('object')
-    expect(state).to.have.deep.property('valid', true)
-  })
+  t.equal(typeof state, 'object')
+  t.equal(state.valid, true)
 
-  it('should accept single line with multiple LABEL directives', () => {
-    const state = label('multi.label1="value1" multi.label2="value2" other="value3"')
+  t.end()
+})
 
-    expect(state).to.have.an('object')
-    expect(state).to.have.deep.property('valid', true)
-  })
+tape('should accept single line with multiple LABEL directives', t => {
+  const state = label('multi.label1="value1" multi.label2="value2" other="value3"')
 
-  it('should accept multiple line LABEL directives', () => {
-    const state = label('["multi.label1=\'value1\'", "multi.label2=\'value2\'", "other=\'value3\'"]')
+  t.equal(typeof state, 'object')
+  t.equal(state.valid, true)
 
-    expect(state).to.have.an('object')
-    expect(state).to.have.deep.property('valid', true)
-  })
+  t.end()
+})
+
+tape('should accept multiple line LABEL directives', t => {
+  const state = label('["multi.label1=\'value1\'", "multi.label2=\'value2\'", "other=\'value3\'"]')
+
+  t.equal(typeof state, 'object')
+  t.equal(state.valid, true)
+
+  t.end()
 })
