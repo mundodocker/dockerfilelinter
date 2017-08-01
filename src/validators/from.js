@@ -18,7 +18,7 @@ module.exports = (image) => {
     if (tag.toLowerCase() === 'latest') {
       return {
         valid: false,
-        rule: rules.FROM002
+        rule: rules.FRM002
       }
     }
 
@@ -40,6 +40,6 @@ module.exports = (image) => {
 
   return {
     valid: false,
-    rule: rules.FROM002
+    rule: rules.FRM002
   }
 }
