@@ -7,7 +7,7 @@ module.exports = {
     message: 'Invalid FROM directive'
   },
   FRM002: {
-    code: 'frm001',
+    code: 'frm002',
     type: types.WARN,
     message: 'Tag or digest is missing or defined as `latest`'
   },
